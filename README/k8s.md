@@ -178,3 +178,29 @@ https://kubernetes.io/docs/tasks/tools/install-minikube/
 ### matchLabels gets the handle of created pod by using the selector property
 ## why we use service: when a pod gets created it gets an IP address and that ip address is updated or maintained in environment and here Service makes use of selector to redirect the traffic to
 ## configured is something like created
+
+# Applying a newer version of image
+## delete pod so kubectl will recreate it - not a good solution as so many things can go wrong
+## reference version in deployment file - adds an extra step
+## imperitive command to be used
+#### Steps involved
+##### tag image with image version number
+##### push the image to docker hub
+##### tell kubectl to apply changes
+###### kubectl set image <OBJECT>/<OBJECT-NAME>  <CONTAINER-NAME>=<IMAGE-NAME>
+
+# Access docker server present inside of k8s
+## configure docker-client installed of local system to talk to docker-server running inside of the k8s
+## eval $(minikube docker-env) then run "docker ps" to access container inside of k8s
+### above commands simply exports certain variables
+#### export DOCKER_TLS_VERIFY="1"
+#### export DOCKER_HOST="tcp://192.168.49.2:2376"
+#### export DOCKER_CERT_PATH="/home/workstation/.minikube/certs"
+#### export MINIKUBE_ACTIVE_DOCKERD="minikube"
+#### 
+#### # To point your shell to minikube's docker-daemon, run:
+#### # eval $(minikube -p minikube docker-env)
+## get access to logs directly from kube ctl
+### kubectl get pods
+### kubectl logs <POD-ID>
+### kubectl exect -it <POD-ID> sh
