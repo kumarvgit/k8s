@@ -177,3 +177,4 @@ https://kubernetes.io/docs/tasks/tools/install-minikube/
 ### Deployment makes a requests k8s api-service to create pods for it
 ### matchLabels gets the handle of created pod by using the selector property
 ## why we use service: when a pod gets created it gets an IP address and that ip address is updated or maintained in environment and here Service makes use of selector to redirect the traffic to
+## configured is something like created
