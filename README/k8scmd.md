@@ -70,4 +70,8 @@ storageclasses                    sc           storage.k8s.io/v1                
 volumeattachments                              storage.k8s.io/v1                      false        VolumeAttachment
 
 
+## delete a configuration "kubectl delete -f <FILE-NAME>" it needs to wait for 10seconds to get cleanedup
+## "kubectl get deployments" get all deployments running
+## get internal ip of pod "kubectl get pods -o wide"
+
 

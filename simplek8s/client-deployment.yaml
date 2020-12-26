@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: client-deployment
+spec:
+  # how many cpoies of pods this Deployment suppose to make
+  replicas: 1
+  # selector is similar to service configuration i.e. having kind as "Service"
+  # after pod is created by master,
+  # master is going to return the handle of selector from template to manage it
+  selector:
+  # this lable is going to be exactly same as 
+    matchLabels:
+      component: web
+  # defenition of every single pod which needs to be created
+  template:
+    metadata:
+      labels:
+        component: web # meant for matchLables in Deployment spec
+    spec:
+      containers:
+        - name: client
+          image: stephengrider/multi-client
+          ports:
+            - containerPort: 3000

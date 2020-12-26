@@ -161,3 +161,19 @@ https://kubernetes.io/docs/tasks/tools/install-minikube/
 ## declarative way
 ### when kubectl apply command is issued then master looks for a specific "name" and "kind" to decide whether to update or add a container any other change is fine
 ## get containers running inside of a pod - "kubectl describe <TYPE> <NAME-of-pod>"
+
+## in pods we can not change the containerPort, if we chabge the containerPort and apply I ma going it get an error
+## there is better approach to Pods it's called Deployment
+## Pods (containers)
+### Runs single set of closly related containers
+### Good for development purpose
+### Rarely used in production
+
+## Deployment (creates identical pods)
+### Runs a set of identical pods
+### Deployment itself is going to monitor state of pods
+### Good for dev and prod
+### Deployment --> Contains pod template --> pod contains containers
+### Deployment makes a requests k8s api-service to create pods for it
+### matchLabels gets the handle of created pod by using the selector property
+## why we use service: when a pod gets created it gets an IP address and that ip address is updated or maintained in environment and here Service makes use of selector to redirect the traffic to
