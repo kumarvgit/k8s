@@ -156,3 +156,8 @@ https://kubernetes.io/docs/tasks/tools/install-minikube/
 ## declarative  is controlled by master, it is a guidance to master and master decides how to make it happen
 ## imperitive is saying exactly what needs to be done
 
+
+#Updating a config
+## declarative way
+### when kubectl apply command is issued then master looks for a specific "name" and "kind" to decide whether to update or add a container any other change is fine
+## get containers running inside of a pod - "kubectl describe <TYPE> <NAME-of-pod>"
