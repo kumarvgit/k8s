@@ -204,3 +204,46 @@ https://kubernetes.io/docs/tasks/tools/install-minikube/
 ### kubectl get pods
 ### kubectl logs <POD-ID>
 ### kubectl exect -it <POD-ID> sh
+
+# ClusterIP
+## Exposes a port to other object in cluster but not to outside parworld unlike NodePort
+
+# Persistence Volume Claim (or simply PVC)
+## Volume: it is an object which exist at pod level it dies with the pod - this is a kubernates volume
+## persistence volume: it is a volume created outside of pod so if a pod crashes then a new instance attaches itself to persistence volume and carries on with it.
+## Persistence volume claim - This is a configuration which says there are various options to create a persistence volume in hard drive
+## access modes PVC
+### ReadWriteOnce - can be used by single node
+### ReadOnlyMany - Multiple node can read from this
+### ReadWriteMany - read and write by many nodes
+## Persistence volumes are of two types:
+### Statically provisioned - These are the ones which are readily available
+### Dynamically provisioned - These are the ones which are dynamically provisioned on demand by the pod
+## Get Storage volumes 'kubectl get storageclass'
+## 'kubectl describe storageclass'
+## if we do not specify the sorage class then default is going to be picked
+## 'kubectl get pvc' get all pvc i.e. which are available for claim
+## 'kubectl get pv' get all persistent volumes
+## each in cluster connects to other service using 'ClusterIP' name in metadata
+## env is injected as array of key and value pair inside of container
+
+## adding secure environment variables and needs to be added in each environment e.g. for cloud
+### done by Secrets object and using a imperitive command
+### syntax "kubectl create secret <TYPE-OF-SECRET>  <SECRET-NAME> <SOURCE> <KEY=VALUE>"
+#### TYPE-OF-SECRET
+##### generic - general purpose
+##### tls
+##### docker-registry - when we need to pull images from custom registry instead of docker hub
+#### SOURCE
+##### can be a file
+##### --from-literal - from command line
+##### KEY=VALUE is an array i.e. we can put multiple key and value in same go and also this would add an extra step while accessing it via secretKeyRef in valueFrom in configuration file
+### e.g. commandline "kubectl create secret generic pgpassword --from-literal PGPASSWORD=12345asdf"
+## delete a secret : "kubectl delete secret pgpassword"
+
+# Ingress Service
+## LoadBalance - Legacy way to get traffic in cluster
+### Load balancer exposes to one deployment kind (or one set of pods referred in deployment) i.e. if we have two service getting exposed to outside world it is going to be two load balancer
+### There are different types of Ingress Service
+#### e.g. Nginx Ingresss
+## a controller is anything which helps in achieving a desired state of cluster e.g. deployments, since it specifically says i need x number of pods running

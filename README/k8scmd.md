@@ -74,4 +74,9 @@ volumeattachments                              storage.k8s.io/v1                
 ## "kubectl get deployments" get all deployments running
 ## get internal ip of pod "kubectl get pods -o wide"
 
+## delete a deployment "kubectl delete <TYPE-OF-OBJECT> <NAME-OF-DEPLOYMENT>"  e.g. 'kubectl delete deployment client-deployment' or 'kubectl delete service client-node-service'
 
+## apply multiple files 'kubectl apply -f <DIR>' e.g. 'kubectl apply -f k8s'
+## metadata name should always be in lowercase and owercase RFC 1123 i.e. '-' or '.' as a character
+
+## validate yaml - 'kubectl create --dry-run --validate -f ./k8s/server-deployment.yaml'
